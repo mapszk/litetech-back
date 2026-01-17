@@ -6,8 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build:render": "npm run build && npm run migration:run:prod",
-    "build": "npx nest build",
+    "build": "nest build -p tsconfig.build.json",
+    "build:render": "npm run build && node scripts/run-migrations.js",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "npx nest start",
     "start:dev": "npx nest start --watch",
@@ -21,11 +21,11 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migration:generate": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d data-source.ts",
     "migration:run": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d data-source.ts",
-    "migration:run:prod": "node ./node_modules/typeorm/cli.js migration:run -d dist/data-source.js",
     "migration:revert": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d data-source.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.971.0",
+    "@nestjs/cli": "^11.0.16",
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
@@ -35,13 +35,13 @@
     "@types/multer": "^2.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.3",
+    "dotenv": "^17.2.3",
     "multer": "^2.0.2",
     "multer-s3": "^3.0.1",
     "pg": "^8.17.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
-    "typeorm": "^0.3.28",
-    "@nestjs/cli": "^11.0.16"
+    "typeorm": "^0.3.28"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
