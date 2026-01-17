@@ -18,6 +18,8 @@ export class RelatedPostsService {
     const post = this.relatedPostsRepository.create({
       title: createRelatedPostDto.title,
       image: imageUrl,
+      author: 'John Doe',
+      readTime: 5,
     });
     return this.relatedPostsRepository.save(post);
   }

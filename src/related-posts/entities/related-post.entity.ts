@@ -16,6 +16,12 @@ export class RelatedPost {
   @Column()
   image: string; // URL completa de la imagen
 
+  @Column()
+  author: string;
+
+  @Column()
+  readTime: number;
+
   @CreateDateColumn()
   createdAt: Date;
 }

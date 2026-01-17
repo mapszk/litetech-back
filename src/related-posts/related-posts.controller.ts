@@ -46,7 +46,7 @@ export class RelatedPostsController {
         cb(null, true);
       },
       limits: {
-        fileSize: 5 * 1024 * 1024, // 5MB
+        fileSize: 3 * 1024 * 1024, // 3MB
       },
     }),
   )
