@@ -9,6 +9,7 @@ import { RelatedPostsModule } from './related-posts/related-posts.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: '.env',
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
