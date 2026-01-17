@@ -19,7 +19,9 @@ import { RelatedPostsModule } from './related-posts/related-posts.module';
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
       autoLoadEntities: true,
-      synchronize: true, // ⚠️ SOLO desarrollo - usar migraciones en producción
+      synchronize: false,
+      migrationsRun: true,
+      migrations: ['dist/migrations/*.js'],
     }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),
@@ -28,4 +30,4 @@ import { RelatedPostsModule } from './related-posts/related-posts.module';
     RelatedPostsModule,
   ],
 })
-export class AppModule {}
+export class AppModule { }
