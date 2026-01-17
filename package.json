@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "build:render": "npm run build && npm run migration:run:prod",
     "build": "npx nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "npx nest start",
@@ -20,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migration:generate": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d data-source.ts",
     "migration:run": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d data-source.ts",
+    "migration:run:prod": "node ./node_modules/typeorm/cli.js migration:run -d dist/data-source.js",
     "migration:revert": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d data-source.ts"
   },
   "dependencies": {
