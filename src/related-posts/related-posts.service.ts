@@ -9,7 +9,7 @@ export class RelatedPostsService {
   constructor(
     @InjectRepository(RelatedPost)
     private relatedPostsRepository: Repository<RelatedPost>,
-  ) {}
+  ) { }
 
   async create(
     createRelatedPostDto: CreateRelatedPostDto,
@@ -18,8 +18,8 @@ export class RelatedPostsService {
     const post = this.relatedPostsRepository.create({
       title: createRelatedPostDto.title,
       image: imageUrl,
-      author: 'John Doe',
-      readTime: 5,
+      author: createRelatedPostDto.author,
+      readTime: createRelatedPostDto.readTime,
     });
     return this.relatedPostsRepository.save(post);
   }
