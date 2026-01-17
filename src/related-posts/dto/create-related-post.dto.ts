@@ -1,4 +1,5 @@
-import { IsInt, IsNotEmpty, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsInt, IsNotEmpty, IsPositive, IsString } from 'class-validator';
 
 export class CreateRelatedPostDto {
   @IsNotEmpty()
@@ -10,6 +11,8 @@ export class CreateRelatedPostDto {
   author: string;
 
   @IsNotEmpty()
-  @IsInt()
+  @Type(() => Number)
+  @IsInt({ message: 'readTime must be a integer' })
+  @IsPositive({ message: 'readTime must be > than 0' })
   readTime: number;
 }

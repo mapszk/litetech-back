@@ -38,10 +38,7 @@ export class RelatedPostsController {
       }),
       fileFilter: (req, file, cb) => {
         if (!file.originalname.match(/\.(jpg|jpeg|png|gif|webp)$/)) {
-          return cb(
-            new BadRequestException('Solo se permiten imágenes'),
-            false,
-          );
+          return cb(new BadRequestException('Only images are allowed'), false);
         }
         cb(null, true);
       },
@@ -55,13 +52,13 @@ export class RelatedPostsController {
     @UploadedFile() file: Express.Multer.File,
   ) {
     if (!file) {
-      throw new BadRequestException('La imagen es requerida');
+      throw new BadRequestException('Image is required');
     }
 
     const backendUrl = process.env.BACKEND_URL;
     if (!backendUrl && process.env.NODE_ENV === 'production') {
       throw new InternalServerErrorException(
-        'BACKEND_URL es obligatoria en producción',
+        'BACKEND_URL is required in production',
       );
     }
 

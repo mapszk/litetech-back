@@ -14,7 +14,7 @@ export class RelatedPost {
   title: string;
 
   @Column()
-  image: string; // URL completa de la imagen
+  image: string;
 
   @Column()
   author: string;
